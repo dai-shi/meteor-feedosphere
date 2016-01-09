@@ -1,10 +1,12 @@
 head
+  meta(content="width=device-width, initial-scale=1, user-scalable=no", name="viewport")
   title Feedosphere
 
 body
   .container
     h1 Feedosphere
-    p RSS feed for Meteor packages at [atmosphere](https://atmospherejs.com/).  Just subscribe the following link using your favorite RSS reader.
+    p RSS feed for Meteor packages at <a href="https://atmospherejs.com/">atmosphere</a>.
+    p Just subscribe the following link using your favorite RSS reader.
     ul
       li
         a(href="{{feedUrl}}") {{feedUrl}}
