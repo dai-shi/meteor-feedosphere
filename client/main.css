@@ -12,5 +12,9 @@ body {
 }
 
 a {
-  color: skyblue;
+  color: #33ccff;
+}
+
+a:hover {
+  color: #7ddeff;
 }
