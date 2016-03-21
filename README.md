@@ -8,4 +8,4 @@ How to use
 
 Subscribe the following url:
 
-- <http://feedosphere.meteor.com/rss/latest>
+- <http://feedosphere.axlight.com/rss/latest>
