@@ -12,9 +12,10 @@ blaze-html-templates    # Compile .html files into Meteor Blaze views
 #jquery                  # Helpful client-side library
 #tracker                 # Meteor's client-side reactive programming library
 
-standard-minifiers      # JS/CSS minifiers run for production mode
 ecmascript              # Enable ECMAScript2015+ syntax in app code
 
 raix:rssfeed
 mquandalle:jade
 twbs:bootstrap
+standard-minifier-css
+standard-minifier-js
