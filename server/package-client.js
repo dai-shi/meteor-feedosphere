@@ -3,7 +3,8 @@
 // https://github.com/meteor/meteor/tree/devel/tools/packaging
 
 /* global Configs:true, Versions:true */
-/* eslint no-console:false */
+/* eslint no-console:0 */
+/* eslint-env meteor */
 
 Configs = new Mongo.Collection('Configs');
 Versions = new Mongo.Collection('Versions');
@@ -16,19 +17,19 @@ if (syncToken) {
 } else {
   // XXX wishing to use "defaults" collection
   syncToken = {
-    format: '1.1'
+    format: '1.1',
   };
 }
 
 function getAllPackageData() {
-  conn.call('syncNewPackageData', syncToken, function(err, result) {
+  conn.call('syncNewPackageData', syncToken, (err, result) => {
     if (err) return console.log('failed to sync new package data', err);
     if (result.resetData) {
       Versions.remove({});
     }
     const versions = result.collections.versions;
-    for (let item of versions || []) {
-      let oldItem = Versions.findOne(item.packageName);
+    for (const item of versions || []) {
+      const oldItem = Versions.findOne(item.packageName);
       if (!oldItem || oldItem.published < item.published) {
         delete item._id;
         delete item.dependencies;
@@ -37,7 +38,7 @@ function getAllPackageData() {
     }
     syncToken = result.syncToken;
     Configs.upsert('syncToken', {
-      data: syncToken
+      data: syncToken,
     });
     if (!result.upToDate) {
       console.log('sync continuing...', syncToken);
@@ -47,6 +48,7 @@ function getAllPackageData() {
       console.log('sync again...', syncToken);
       Meteor.setTimeout(getAllPackageData, 60 * 1000);
     }
+    return null;
   });
 }
 
