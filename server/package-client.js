@@ -9,7 +9,7 @@
 Configs = new Mongo.Collection('Configs');
 Versions = new Mongo.Collection('Versions');
 
-const conn = DDP.connect('http://packages.meteor.com/');
+const conn = DDP.connect('https://packages.meteor.com/');
 
 let syncToken = Configs.findOne('syncToken');
 if (syncToken) {
